@@ -1,0 +1,21 @@
+https://www.geeksforgeeks.org/dsa/deletion-in-binary-search-tree/
+
+First, find the node with the value to delete. 
+If no node can be found with the value to delete, do nothing.
+
+if node is found with value to be deleted:
+
+Case 1: Node has No Children (Leaf Node)
+remove the node directly
+
+Case 2: Node has One Child (Left or Right Child)
+
+Find the pointer pointing towards the target, 
+redirect pointer to Child
+remove target 
+
+Case 3: Node has Two Children
+
+Find the inorder successor (the smallest value in the right subtree) of the target node.
+Replace the target node's value with the inorder successor
+delete the inorder successor's node (just call deleteItem again on it)
