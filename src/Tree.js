@@ -1,7 +1,7 @@
 import Node from "./Node.js";
 
 export default class Tree {
-    #buildTree(arr, start, end){
+    #buildTree (arr, start, end){
         if (start > end) return null;
         else {
             const mid = Math.floor(start + (end - start) / 2);
@@ -13,12 +13,12 @@ export default class Tree {
         }
     }
 
-    #buildTreeStarter(arr){
+    #buildTreeStarter (arr){
         const sortedArr = [...new Set(arr.toSorted((a, b) => a - b))];
         return this.#buildTree(sortedArr, 0, sortedArr.length - 1);
     }
 
-    constructor(startArray = []){
+    constructor (startArray = []){
         this.size = 0;
         this.root = this.#buildTreeStarter(startArray);
     }
@@ -28,10 +28,35 @@ export default class Tree {
         return this.#includesR(target, this.root);
     }
 
-    #includesR(target, node){
+    #includesR (target, node){
         if (!node) return false;
         return (node.data === target)
             || this.#includesR(target, node.left)
             || this.#includesR(target, node.right);
+    }
+
+    insert (value){
+        // inserts a new node with given value into the tree.
+        // if value already exists in the tree, do nothing.
+        this.#insert(value, this.root);
+    }
+
+    #insert (value, node){
+        // insert value into subtree, rooted at node.
+        if (value === node.data) return;
+        if (value < node.data){
+            if (!node.left) {
+                node.left = new Node(value);
+                return;
+            }
+            this.#insert(value, node.left);
+        }
+        else {
+            if (!node.right) {
+                node.right = new Node(value);
+                return;
+            }
+            this.#insert(value, node.right);
+        }
     }
 }
