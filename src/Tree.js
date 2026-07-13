@@ -59,4 +59,35 @@ export default class Tree {
             this.#insert(value, node.right);
         }
     }
+
+    deleteItem (value){
+        // Delete node with the given value from the tree.
+        // If node is not found, do nothing.
+
+        let targetNode = this.#findNode(value, this.root);
+        let parentOfTargetNode = this.#findParentOf(value, this.root);
+        console.log(parentOfTargetNode ? parentOfTargetNode.data : parentOfTargetNode);
+    }
+
+    #findNode(value, node){
+        // Returns node with the value. If not found, returns null
+        if (!node) return null;
+        if (node.data === value) return node;
+        if (value < node.data) return this.#findNode(value, node.left);
+        if (value > node.data) return this.#findNode(value, node.right);
+    }
+
+    #findParentOf(value, node){
+        // Returns the parent of the node with the value. If not found, returns null
+        const child = this.#findNode(value, this.root);
+        if (!child || child === this.root) return null;
+        else return this.#findParentOfR(value, this.root);
+    }
+
+    #findParentOfR(value, node){
+        if (node.left && node.left.data === value) return node;
+        if (node.right && node.right.data === value) return node;
+        if (value < node.data) return this.#findParentOfR(value, node.left);
+        if (value > node.data) return this.#findParentOfR(value, node.right);
+    }
 }
