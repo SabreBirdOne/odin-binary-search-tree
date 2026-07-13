@@ -24,7 +24,14 @@ export default class Tree {
     }
 
     includes (target){
-        // Returns true if the given value is in the tree, else returns false
-        
+        // Returns true if the given value is in the tree, else returns false 
+        return this.#includesR(target, this.root);
+    }
+
+    #includesR(target, node){
+        if (!node) return false;
+        return (node.data === target)
+            || this.#includesR(target, node.left)
+            || this.#includesR(target, node.right);
     }
 }
