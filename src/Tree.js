@@ -6,6 +6,7 @@ export default class Tree {
         else {
             const mid = Math.floor(start + (end - start) / 2);
             let newRoot = new Node(arr[mid]);
+            this.size++;
             newRoot.left = this.#buildTree(arr, start, mid - 1);
             newRoot.right = this.#buildTree(arr, mid + 1, end);
             return newRoot;            
@@ -20,5 +21,10 @@ export default class Tree {
     constructor(startArray = []){
         this.size = 0;
         this.root = this.#buildTreeStarter(startArray);
+    }
+
+    includes (target){
+        // Returns true if the given value is in the tree, else returns false
+        
     }
 }
