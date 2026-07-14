@@ -62,11 +62,24 @@ export default class Tree {
 
     deleteItem (value){
         // Delete node with the given value from the tree.
-        // If node is not found, do nothing.
+        
 
         let targetNode = this.#findNode(value, this.root);
         let parentOfTargetNode = this.#findParentOf(value, this.root);
         console.log(parentOfTargetNode ? parentOfTargetNode.data : parentOfTargetNode);
+
+        // If node is not found, do nothing.
+        if (!targetNode) return;
+
+        // Case 1: Node has No Children (Leaf Node)
+        if (!targetNode.left && !targetNode.right){
+            if (parentOfTargetNode.left === targetNode) {
+                parentOfTargetNode.left = null;
+            } else {
+                parentOfTargetNode.right = null;
+            }
+        }
+
     }
 
     #findNode(value, node){
