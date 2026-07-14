@@ -29,19 +29,35 @@ prettyPrint(testTree.root);
 console.log("\nRefresh testTree\n");
 testTree = new Tree([1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324]);
 
-[
-    (value) => {console.log(value)}
-].forEach((callbackFunction) => {
-    console.log(`Calling ${callbackFunction} on testTree in levelOrder`);
-    console.log("Before:");
-    prettyPrint(testTree.root);
-    testTree.levelOrderForEach(callbackFunction);
+const callbacks = [
+    (value) => {console.log(value)},
+    null
+];
+
+console.log("Before:");
+prettyPrint(testTree.root);
+
+callbacks.forEach((fn) => {
+    console.log(`Using ${fn} on testTree in levelOrder`);
+    try {
+        testTree.levelOrderForEach(fn);
+    } catch (error) {
+        console.log(error.message);
+    }
     console.log("After:");
     prettyPrint(testTree.root);
+
 })
 
-try {
-    testTree.levelOrderForEach();
-} catch (error){
-    console.log(error.message);
-}
+callbacks.forEach((fn) => {
+    console.log(`Using ${fn} on testTree in inOrder`);
+    try {
+        testTree.inOrderForEach(fn);
+    } catch (error) {
+        console.log(error.message);
+    }
+    console.log("After:");
+    prettyPrint(testTree.root);
+
+})
+

@@ -163,4 +163,37 @@ export default class Tree {
             callback(currentNode.data);
        }       
     }
+
+    inOrderForEach(callback, node = this.root){
+        /*
+            traverses the tree in depth-first in order 
+            and call the callback function on each value as it traverses, 
+            passing each value (not the nodes) as an argument 
+            If no callback function is provided, throw an Error
+        */
+        if (!callback) throw new Error("Tree.inOrderForEach: callback is falsy");
+        if (node.left)  this.inOrderForEach(callback, node.left);
+        if (node)       callback(node.data);
+        if (node.right) this.inOrderForEach(callback, node.right);
+    }
+
+    preOrderForEach(callback){
+        /*
+            traverses the tree in depth-first pre order 
+            and call the callback function on each value as it traverses, 
+            passing each value (not the nodes) as an argument 
+            If no callback function is provided, throw an Error
+        */
+        if (!callback) throw new Error("Tree.preOrderForEach: callback is falsy");
+    }
+
+    postOrderForEach(callback){
+        /*
+            traverses the tree in depth-first post order 
+            and call the callback function on each value as it traverses, 
+            passing each value (not the nodes) as an argument 
+            If no callback function is provided, throw an Error
+        */
+        if (!callback) throw new Error("Tree.postOrderForEach: callback is falsy");
+    }
 }
