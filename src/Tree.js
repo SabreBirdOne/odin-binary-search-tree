@@ -62,11 +62,8 @@ export default class Tree {
 
     deleteItem (value){
         // Delete node with the given value from the tree.
-        
-
         let targetNode = this.#findNode(value, this.root);
         let parentOfTargetNode = this.#findParentOf(value, this.root);
-        console.log(parentOfTargetNode ? parentOfTargetNode.data : parentOfTargetNode);
 
         // If node is not found, do nothing.
         if (!targetNode) return;
@@ -111,7 +108,14 @@ export default class Tree {
                 inOrderSuccessor = inOrderSuccessor.left;
             }
 
-            console.log("inOrderSuccessor:", inOrderSuccessor.data);
+            // Remember the inOrderSuccessor value
+            const inOrderSuccessorValue = inOrderSuccessor.data;
+
+            // Delete the inOrderSuccessor's node
+            this.deleteItem(inOrderSuccessorValue);
+
+            // Replace the target node's value with the inorder successor
+            targetNode.data = inOrderSuccessorValue;            
         }
         
 
