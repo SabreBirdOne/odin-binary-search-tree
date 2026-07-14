@@ -69,3 +69,14 @@ callbacks.forEach((fn) => {
     console.log("After:");
     prettyPrint(testTree.root);
 })
+
+callbacks.forEach((fn) => {
+    console.log(`Using ${fn} on testTree in postOrder`);
+    try {
+        testTree.postOrderForEach(fn);
+    } catch (error) {
+        console.log(error.message);
+    }
+    console.log("After:");
+    prettyPrint(testTree.root);
+})
