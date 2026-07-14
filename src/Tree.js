@@ -103,6 +103,18 @@ export default class Tree {
             }
         }
 
+        // Case 3: Node has Two Children
+        if (targetNode.left && targetNode.right){
+            // Finding inorder successor: start from the target's right subtree, go left until leaf.
+            let inOrderSuccessor = targetNode.right;
+            while(inOrderSuccessor.left !== null){
+                inOrderSuccessor = inOrderSuccessor.left;
+            }
+
+            console.log("inOrderSuccessor:", inOrderSuccessor.data);
+        }
+        
+
     }
 
     #findNode(value, node){

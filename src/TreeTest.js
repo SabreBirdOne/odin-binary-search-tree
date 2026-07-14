@@ -15,7 +15,7 @@ console.log("testTree.includes(621)? ", testTree.includes(621));
 
 // prettyPrint(testTree.root);
 
-[0, 6, 5, 1, 23, 9].forEach((num) => {
+[0, 6, 5, 1, 23, 9, 4, 67, 8].forEach((num) => {
     console.log(`deleting ${num} from testTree`);
     console.log("Before:");
     prettyPrint(testTree.root);
