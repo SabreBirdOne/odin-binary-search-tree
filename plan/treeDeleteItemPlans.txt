@@ -19,3 +19,9 @@ Case 3: Node has Two Children
 Find the inorder successor (the smallest value in the right subtree) of the target node.
 Replace the target node's value with the inorder successor
 delete the inorder successor's node (just call deleteItem again on it)
+    
+    In the implementation, I had the code delete the inorder successor node first 
+    before replacing the value of the target node. 
+    If targetNode and inorder successor have the same value, I get infinite loop
+    Sure, I could replace the values and mark the inorder successor with 
+    some arbitrary value like "DELETE THIS" but arbitrary is not good.
