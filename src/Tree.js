@@ -142,4 +142,25 @@ export default class Tree {
         if (value < node.data) return this.#findParentOfR(value, node.left);
         if (value > node.data) return this.#findParentOfR(value, node.right);
     }
+
+    levelOrderForEach(callback) {
+        /*
+            traverses the tree in breadth-first level order 
+            and call the callback function on each value as it traverses, 
+            passing each value (not the nodes) as an argument 
+            If no callback function is provided, throw an Error
+        */
+       if (!callback) throw new Error("Tree.levelOrderForEach: callback is falsy");
+       let queue = new Array(); // shift and push
+
+       if (!this.root) return;
+       queue.push(this.root);
+       let currentNode = null;
+       while(queue.length){
+            currentNode = queue.shift();
+            if (currentNode.left) queue.push(currentNode.left);
+            if (currentNode.right) queue.push(currentNode.right);
+            callback(currentNode.data);
+       }       
+    }
 }

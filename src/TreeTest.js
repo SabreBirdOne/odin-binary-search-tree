@@ -17,10 +17,25 @@ console.log("testTree.includes(621)? ", testTree.includes(621));
 
 [0, 6, 5, 1, 23, 9, 4, 67, 8].forEach((num) => {
     console.log(`deleting ${num} from testTree`);
+    // console.log("Before:");
+    // prettyPrint(testTree.root);
+    testTree.deleteItem(num);
+    // console.log("After:");
+    // prettyPrint(testTree.root);
+})
+
+prettyPrint(testTree.root);
+
+console.log("\nRefresh testTree\n");
+testTree = new Tree([1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324]);
+
+[
+    (value) => {console.log(value)}
+].forEach((callbackFunction) => {
+    console.log(`Calling ${callbackFunction} on testTree in levelOrder`);
     console.log("Before:");
     prettyPrint(testTree.root);
-    testTree.deleteItem(num);
+    testTree.levelOrderForEach(callbackFunction);
     console.log("After:");
     prettyPrint(testTree.root);
 })
-
