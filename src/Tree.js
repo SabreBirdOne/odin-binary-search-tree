@@ -177,7 +177,7 @@ export default class Tree {
         if (node.right) this.inOrderForEach(callback, node.right);
     }
 
-    preOrderForEach(callback){
+    preOrderForEach(callback, node = this.root){
         /*
             traverses the tree in depth-first pre order 
             and call the callback function on each value as it traverses, 
@@ -185,6 +185,9 @@ export default class Tree {
             If no callback function is provided, throw an Error
         */
         if (!callback) throw new Error("Tree.preOrderForEach: callback is falsy");
+        if (node)       callback(node.data);
+        if (node.left)  this.preOrderForEach(callback, node.left);
+        if (node.right) this.preOrderForEach(callback, node.right);
     }
 
     postOrderForEach(callback){
