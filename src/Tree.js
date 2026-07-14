@@ -79,6 +79,29 @@ export default class Tree {
                 parentOfTargetNode.right = null;
             }
         }
+        // Case 2: Node has One Child (Left or Right Child)
+        if ((targetNode.left && !targetNode.right)
+            || (!targetNode.left && targetNode.right)){
+
+            let pointerToTarget = parentOfTargetNode.left === targetNode ?
+                "left": "right";
+            let pointerToChildOfTarget = targetNode.left ? "left" : "right";
+                
+            if (pointerToTarget === "left"){
+                if (pointerToChildOfTarget === "left"){
+                    parentOfTargetNode.left = targetNode.left;
+                } else {
+                    parentOfTargetNode.left = targetNode.right;
+                }
+            }
+            if (pointerToTarget === "right"){
+                if (pointerToChildOfTarget === "left"){
+                    parentOfTargetNode.right = targetNode.left;
+                } else {
+                    parentOfTargetNode.right = targetNode.right;
+                }
+            }
+        }
 
     }
 
