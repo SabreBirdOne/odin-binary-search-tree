@@ -1,0 +1,2 @@
+I miss having parent pointers in each node inside search trees like these,
+it's more efficient to just go straight up instead of calling findParentOf() constantly. 

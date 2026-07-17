@@ -223,4 +223,15 @@ export default class Tree {
         return Math.max(this.#heightR(node.left), this.#heightR(node.right)) + 1;
     }
 
+    depth (value){
+        /*
+            returns the depth of the node containing the given value
+            Depth: the number of edges in the path from that node to the root node. 
+            If the value is not found, returns undefined
+        */
+        const node = this.#findNode(value, this.root)
+        if (!node) return undefined;
+        if (value === this.root.data) return 0;
+        return this.depth(this.#findParentOf(value, this.root).data) + 1;       
+    }
 }

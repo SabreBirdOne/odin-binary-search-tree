@@ -87,9 +87,11 @@ callbacks.forEach((fn) => {
     testTree.insert(num);
 });
 
-console.log("Testing height()");
+console.log("Testing height() and depth()");
 prettyPrint(testTree.root);
 
 [0, 8, 4, 9, 23, 6345].forEach((num)=>{
     console.log(`height(${num}):`, testTree.height(num));
+    console.log(`depth(${num}):`, testTree.depth(num));
+    console.log("");
 })
