@@ -1,0 +1,56 @@
+Slightly annoying that I have to run tests as node files instead of with jest watch this time.
+since prettyPrint looks ugly in jest watch. 
+
+Overall, I think I have similar challenges to writing the LinkedList project in JS.
+Parent pointers would have been really nice to traverse up the tree, but 
+I think we can't have that here in JS because having a parent pointer in JS means
+a recursively defined data structure. For example: A is parent of B. 
+The node data structures without parent pointer looks like this:
+
+Node {
+    data: A,
+    left: null
+    right: Node {
+        data: B,
+        left: null,
+        right: null
+    }
+}
+
+Node { 
+    data: B,
+    left: null,
+    right: null
+}
+
+if you add a parent pointer...
+Node {
+    parent: null,
+    data: A,
+    left: null
+    right: Node {
+        data: B,
+        left: null,
+        right: null
+    }
+}
+
+Node { 
+    parent: Node { // here is where A starts
+        parent: null,
+        data: A,
+        left: null
+        right: Node { // right refers to B
+            parent: // and theoretically, A again!
+            ...
+        }
+    }
+    data: B,
+    left: null,
+    right: null
+}
+
+I miss parent pointers a lot more now. And C style pointers in general. They are so versatile.
+
+Thanks a lot to ODIN PROJECT for providing big clues on how to implement the algorithms and 
+example "driver script". Saves me from having to figure this all over again myself.
