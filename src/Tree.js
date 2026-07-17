@@ -234,4 +234,23 @@ export default class Tree {
         if (value === this.root.data) return 0;
         return this.depth(this.#findParentOf(value, this.root).data) + 1;       
     }
+
+    isBalanced(){
+        /* Returns true if this tree is balanced 
+            A binary tree is considered balanced if:
+                for every node in the tree, 
+                    height difference between its left and right subtrees is no more than 1, 
+                    and both the left and right subtrees are also balanced.
+        */
+        return this.#isBalancedR(this.root);
+    }
+
+    #isBalancedR(node) {
+        if (!node) return true;
+        const heightLeft = !node.left ? 0 : this.#heightR(node.left);
+        const heightRight = !node.right ? 0 : this.#heightR(node.right);
+        const isBalancedLeft = !node.left ? true : this.#isBalancedR(node.left);
+        const isBalancedRight = !node.right ? true : this.#isBalancedR(node.right);
+        return Math.abs(heightLeft - heightRight) <= 1 && isBalancedLeft && isBalancedRight;
+    }
 }
