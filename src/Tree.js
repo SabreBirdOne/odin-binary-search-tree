@@ -202,4 +202,25 @@ export default class Tree {
         if (node.right) this.postOrderForEach(callback, node.right);
         if (node)       callback(node.data);
     }
+
+    height(value){
+        /* returns the height of the node containing the given value 
+        height: the number of edges in the longest path from that node to a leaf node
+        if value is not found, return undefined
+        */
+        const node = this.#findNode(value, this.root);
+        if (!node) return undefined;
+        return this.#heightR(node);
+            
+    }
+
+    #heightR(node){
+        // if node is null or is a leaf node, height is 0
+        if (!node || (!node.left && !node.right)){
+            return 0;
+        }
+        // else, height is maximum height between left and right subtree plus 1
+        return Math.max(this.#heightR(node.left), this.#heightR(node.right)) + 1;
+    }
+
 }

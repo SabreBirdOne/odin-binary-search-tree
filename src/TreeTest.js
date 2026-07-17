@@ -46,7 +46,7 @@ callbacks.forEach((fn) => {
     }
     console.log("After:");
     prettyPrint(testTree.root);
-})
+});
 
 callbacks.forEach((fn) => {
     console.log(`Using ${fn} on testTree in inOrder`);
@@ -57,7 +57,7 @@ callbacks.forEach((fn) => {
     }
     console.log("After:");
     prettyPrint(testTree.root);
-})
+});
 
 callbacks.forEach((fn) => {
     console.log(`Using ${fn} on testTree in preOrder`);
@@ -68,7 +68,7 @@ callbacks.forEach((fn) => {
     }
     console.log("After:");
     prettyPrint(testTree.root);
-})
+});
 
 callbacks.forEach((fn) => {
     console.log(`Using ${fn} on testTree in postOrder`);
@@ -79,4 +79,17 @@ callbacks.forEach((fn) => {
     }
     console.log("After:");
     prettyPrint(testTree.root);
+});
+
+
+[6, 8, 10].forEach((num) => {
+    console.log(`inserting ${num} to testTree`);
+    testTree.insert(num);
+});
+
+console.log("Testing height()");
+prettyPrint(testTree.root);
+
+[0, 8, 4, 9, 23, 6345].forEach((num)=>{
+    console.log(`height(${num}):`, testTree.height(num));
 })
