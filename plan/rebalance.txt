@@ -1,0 +1,12 @@
+Write a rebalance() function that rebalances an unbalanced tree. 
+You’ll want to use a traversal method to provide a new array to the buildTree() function.
+
+I'm thinking we use Level Order traversal on the pre-existing tree...
+
+My plan initially is to create an array of elements in level order of the old tree,
+feed it into buildTree, then hook this.root onto the new tree. 
+
+I realized the order doesn't matter, because buildTree copies the given array 
+into a sorted one anyway, 
+
+and recursively splits the array into halves as part of building the tree.

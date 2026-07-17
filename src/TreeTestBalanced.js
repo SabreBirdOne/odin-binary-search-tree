@@ -42,3 +42,21 @@ testTree.inOrderForEach(printElement);
 
 prettyPrint(testTree.root);
 console.log("isBalanced(): ", testTree.isBalanced());
+
+console.log("Calling Tree.rebalance...");
+testTree.rebalance();
+
+prettyPrint(testTree.root);
+console.log("isBalanced(): ", testTree.isBalanced());
+
+console.log("level order");
+testTree.levelOrderForEach(printElement);
+
+console.log("pre order");
+testTree.preOrderForEach(printElement);
+
+console.log("post order");
+testTree.postOrderForEach(printElement);
+
+console.log("in order");
+testTree.inOrderForEach(printElement);

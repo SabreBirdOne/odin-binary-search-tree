@@ -253,4 +253,15 @@ export default class Tree {
         const isBalancedRight = !node.right ? true : this.#isBalancedR(node.right);
         return Math.abs(heightLeft - heightRight) <= 1 && isBalancedLeft && isBalancedRight;
     }
+
+    rebalance(){
+        /* rebalances this tree, if tree is unbalanced*/
+        if (this.isBalanced()) return;
+
+        let insertionOrder = [];
+        this.levelOrderForEach((value) => insertionOrder.push(value));
+        
+        const newTree = new Tree(insertionOrder);
+        this.root = newTree.root;
+    }
 }
